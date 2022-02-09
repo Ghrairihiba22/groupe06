@@ -13,7 +13,7 @@ Ex1:
 
 <P> clique sur le bouton pour calculer le périmètre d'un rectangle</p>
 <button onclick = périmètreR()>Lancer la fonction </button>
-<p Id = "Res1"></p>
+<p Id = "res1"></p>
 
     <script type="text/javascript">
 
@@ -24,7 +24,7 @@ Function PérimètreC() {
     Alert ("le périmètre Cercle "+res .to fixed(2));
     Console.log(res.tofixed (2));
     }
-    Document.getelementbyid("res")=innerhtml=res ;
+    Document.getelementbyid("res").innerhtml=res ;
 
 
     </script>

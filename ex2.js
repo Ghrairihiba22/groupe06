@@ -15,17 +15,10 @@ Ex2 :
 
 <script type="text/javascript">
 
-
-Function date {
-Var d =new date ();
-Var x = d.getday();
-SWitch(x) {
-Case 0 :
-Document .getelementbyid("res")Inner.html="On est "+"Dimanche ;
-Case1:
-Document .getelementbyid("res")Inner.html="On est"+" lundi ;
-Break ;
-}
+jours=new array('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi');
+var aujourd'hui=new date();
+var result= jours[aujourd'hui.getday()];
+		  document.writeln(result);
 
 
 </script>

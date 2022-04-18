@@ -11,7 +11,7 @@ EX1:
     <body >
     
     
-       <button onclick="Joueur.initJoueur('wael','tres tres bien','motna')">ajouter</button>
+       <button onclick="Joueur.initJoueur('groupe6','tres tres bien','cv pas')">ajouter</button>
        <br><br>
        <button onclick="Joueur.decrire()">afficher joueur</button>
        <br><br>

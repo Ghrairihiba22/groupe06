@@ -1,1 +1,471 @@
+EX1:
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+      <title>tp2</title>
+      <meta charset="utf-8">    
+   
+    </head > 
+     <header> 
+      </header>
+    <body >
+    
+    
+       <button onclick="Joueur.initJoueur('wael','tres tres bien','motna')">ajouter</button>
+       <br><br>
+       <button onclick="Joueur.decrire()">afficher joueur</button>
+       <br><br>
+       <button onclick="Adversaire.initAdversaire('admin', 'bonne' ,'tres forte', 'race1','valeur1')">ajouter adversaire</button>
 
+
+<script>
+  
+var Personnage ={
+initPerso : function (nom, sante, force){
+this.nom =nom;
+this.sante =sante;
+this.force = force;}
+};
+
+var Joueur = Object.create (Personnage) ; //l Prototype du Joueu
+Joueur.initJoueur = function (nom, sante,force){
+this.initPerso (nom, sante, force); // appelle init Perso
+this.Xp = 0;
+};
+
+//init la partie joueur
+
+//on ajoute 1a function décrire au prototyppe
+Joueur.decrire = function (){
+
+    var description = this.nom + " a " +this.sante +" points devie , "+
+    this.force +" en torce et "+this.xp+" pointsd'expérience";
+    console.log(description);
+return description ;
+};
+
+
+//on crée le prototype Adversaire
+
+var Adversaire = Object.create (Personnage);
+
+// on ajoute la function initAdversai re au prototype
+
+Adversaire.initAdversaire= function (nom, sante ,force, race,valeur) {
+this.initPerso (nom, sante, force) ;
+this.race =race;
+this.valeur = valeur;};
+
+
+</script>
+
+
+      <footer>
+    
+    </footer>
+    
+
+  
+    </body>
+</html>
+
+
+EX2:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tp1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style1.css" rel="stylesheet">
+    </head>
+
+    <body>
+      <button  onclick="affiche()"> afficher tous les films </button>
+      <h1 id="affich"></h1>
+     <br>
+      
+      <input type="text" value="nom de film" class="p2" name="p2">
+      <input type="text" value="annee de film" class="p1" name="p1">
+      <button onclick="aj(document.querySelector('.p1').value,document.querySelector('.p2').value)">
+        ajouter un film</button>
+
+        </body>
+
+
+
+        <script>
+
+          var film={
+            init : function(titre,annee){
+            this.titre=titre;
+            this.anne=annee;
+            },
+            decrire : function (){
+              let description = "le titre est " +this.titre+" l'annee est "+this.anne;
+             return (description);
+            }
+          };
+
+          //creation d'un tableau de film         
+          var films = [];
+          //affichage du tableau des film 
+         function affiche(){
+         Console.log(film.decrire()); 
+
+          }
+          
+          
+          function aj(ann,nom){
+            film = Object.create(film);
+            film.init(nom,ann);
+            films.push(film);
+          }
+//creation d'un filme et rangement dans le table le tableau
+var film = Object.create(film);
+film.init("ta'ang",2016);
+films.push(film);
+//creation d'un filme et rangement dans le table le tableau
+var film = Object.create(film);
+film.init("juste la fin de mande",2016);
+films.push(film);
+//creation d'un filme et rangement dans le table le tableau
+var film = Object.create(film);
+film.init("divines",2016);
+films.push(film);
+
+ 
+         
+          
+         //affichage
+         function affiche(){
+               films.forEach(function (film){
+            alert(film.decrire());
+         });
+         }
+       
+         
+
+        </script>
+</html>
+
+EX3;
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        th {
+            border: 1px solid black;
+            width: 300px;
+        }
+    </style>
+    <h1>tableau structures</h1>
+    <h4>tableau de depart:</h4>
+    <br>
+<input type="button" onclick="add()" value="add eleve" >
+<input type="button" onclick="affiche_eleve()" value="recherche eleve" >
+
+
+
+    <table id="tab" class="tab">
+        <tr>
+            <th>prenome</th>
+            <th>notes</th>
+            <th>photos</th>
+        </tr>
+
+    </table>
+
+ <p> le eleve </p>
+<table id="rech">
+   
+   
+</table>
+
+    <p id="sup"></p>
+    <p id="moy"></p>
+    <p id="max"></p>
+    <p id="pos"></p>
+
+
+    <h4>tableau trie par nom:</h4>
+    <br>
+
+    <table id="tab_trie_name">
+        <tr>
+            <th>prenome</th>
+            <th>notes</th>
+            <th>photos</th>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+
+
+    <input type="button" onclick="affiche_eleve_tri()" value="recherche eleve apres tri" >
+    <h4>tableau trie par note:</h4>
+    <br>
+    <table id="tab_trie_note">
+        <tr>
+            <th>prenome</th>
+            <th>notes</th>
+            <th>photos</th>
+        </tr>
+    </table>
+
+</body>
+
+<script>
+    let classe = [];
+let eleve={
+
+    
+    init : function (nom,n){
+
+        console.log(nom);
+        this.nom=nom;
+        this.n=n;
+    }
+    
+};
+   /* var t = [8, 12, 9];
+var n = ["tata", "tete", "titi"];
+var src = ["images.jpg","pp.jpg","profil.jpg"];
+window.eleve = new Array; */
+
+// create array des eleves
+
+
+    
+  
+
+
+//affichage de array eleve 
+
+
+
+classe.forEach(function(element) {
+
+    document.getElementById("tab").innerHTML += 
+    "<tr>" + 
+      
+    "<th>" + 
+        element.name +
+         "</th>" + 
+
+         "<th>" + 
+         element.n + 
+         "</th>" +
+
+          "<th>" +
+     '<img height="150px" width="150px" src=" ' + element.photo + '" >' +
+      "</th>"+
+
+    "</tr>";
+    console.log(element);
+});
+
+
+
+define();
+function define(){
+
+
+//note sup a 3achra 
+sup();
+function sup(){
+    s = classe.filter( n => n > 10);
+document.getElementById("sup").innerHTML ='nombre de note superieures a 10: '+ s.length;
+}
+//calc moyenne
+moy();
+function moy(){
+    let sum = 0;
+    classe.forEach(function(element) {
+    sum += element.n;
+});
+document.getElementById("moy").innerHTML ='moyenne des notes: '+ (sum / classe.length);
+}
+// find the max 
+max();
+function max(){
+let max = 0;
+classe.forEach(function(element) {
+    if (element.n > max) { max = element.n}
+});
+document.getElementById("max").innerHTML ='Max: '+ max;
+}
+// find pos
+find();
+function find(){
+let r = classe.find(({ n }) => n === 9);
+document.getElementById("pos").innerHTML ='9 est present dans le tableau en position  '+ (classe.indexOf(r) + 1);
+}
+
+
+
+}
+
+
+
+
+
+
+
+inis();
+function inis(){
+
+
+
+//trie tab by name
+let tb = classe.sort(function(a, b) {
+    var nameA = a.name.toUpperCase();
+    var nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    return 0;
+});
+var k="";
+tb.forEach(function(element) {
+   k += 
+    "<tr>" + 
+      
+    "<th>" + 
+    element.name +
+         "</th>" + 
+
+         "<th>" + 
+         element.n + 
+         "</th>" +
+
+          "<th>" +
+     '<img height="150px" width="150px" src=" ' + element.photo + '" >' +
+      "</th>"+
+
+    "</tr>";
+});
+document.getElementById("tab_trie_name").innerHTML=k;
+
+//trie tab by note 
+let tr = classe.sort((a, b) => a.n - b.n);
+k="";
+tr.forEach(function(element) {
+k +=  "<tr>" + 
+      
+    "<th>" + 
+    element.name +
+         "</th>" + 
+
+         "<th>" + 
+         element.n + 
+         "</th>" +
+
+          "<th>" +
+     '<img height="150px" width="150px" src=" ' + element.photo + '" >' +
+      "</th>"+
+
+    "</tr>";
+});
+document.getElementById("tab_trie_note").innerHTML=k;
+return(tr);
+}
+function affiche_eleve_tri(){
+    tr= inis();
+    var nom =prompt('saisire un nom');
+    var t_n = tr.filter(element=> element.name==nom) ;
+    console.log(t_n);
+
+
+    
+    if(t_n.length===0){
+        alert('eleve ne exciste pas');
+        document.getElementById("rech").innerHTML = "";
+    }
+    else{
+        document.getElementById("rech").innerHTML = 
+        
+          "<tr> <th>prenome</th> <th>notes</th> <th>photos</th> </tr> " +
+
+        "<tr>" + 
+      
+        "<th>" + 
+            t_n[0].name +
+             "</th>" + 
+    
+             "<th>" + 
+             t_n[0].n + 
+             "</th>" +
+    
+              "<th>" +
+         '<img height="150px" width="150px" src=" ' + t_n[0].photo + '" >' +
+          "</th>"+
+    
+        "</tr>";
+    }
+}
+
+function add(){
+    
+     n2 = prompt('saisire nom');
+     no = parseInt(prompt('saisire note'));
+    eleve= Object.create(eleve);
+    console.log(n2);
+eleve.init(n2,no);
+classe.push(eleve);
+    
+    document.getElementById("tab").innerHTML += 
+    "<tr>" + 
+      
+    "<th>" + 
+        classe[classe.length-1].name +
+         "</th>" + 
+
+         "<th>" + 
+      classe[classe.length-1].n + 
+         "</th>" +
+
+          "<th>" +
+     '<img height="150px" width="150px" src=" ' + classe[classe.length-1].photo + '" >' +
+      "</th>"+
+
+    "</tr>";
+
+  
+  inis();
+  define();
+;}
+//affivhe eleve ou total tab
+function affiche_eleve(){
+    alert('affichage totale ou une selle case ? 0 si total 1 si non');
+    var ch =parseInt(prompt('saisie le choix'));
+
+    if(ch==1){
+ 
+           var name =prompt('saisie le nom');
+    }
+   let i=0;
+    classe.forEach((element)=>{
+        if((ch==1)&&(element==name)){
+            console.log(document.querySelectorAll('.tab')[i].innerHTML);
+        }
+        else if(ch==0){
+            console.log(document.querySelectorAll('.tab')[i].innerHTML);
+        }
+        i++;
+    });}
+</script>
+</html>
